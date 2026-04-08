@@ -1,0 +1,18 @@
+{
+  "name": "drone-test-practice",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "forwardPorts": [8080],
+  "portsAttributes": {
+    "8080": {
+      "label": "Quiz App",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "files.encoding": "utf8"
+      }
+    }
+  }
+}

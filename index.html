@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>遙控無人機線上刷題機</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="control-panel">
+      <div>
+        <p class="eyebrow">Exam Drill</p>
+        <h1>遙控無人機線上刷題機</h1>
+        <p class="lead">依章節出題、保留作答紀錄，並把錯題集中起來重複練習。</p>
+      </div>
+
+      <section class="panel-card">
+        <h2>練習設定</h2>
+        <div id="chapter-list" class="chapter-list"></div>
+
+        <label class="field-label" for="practice-mode">練習模式</label>
+        <select id="practice-mode" class="field-control">
+          <option value="all">全部題目</option>
+          <option value="wrong">只練錯題</option>
+          <option value="unanswered">只練未作答</option>
+          <option value="incorrectly-answered">曾答錯過的題目</option>
+        </select>
+
+        <label class="field-label" for="question-order">出題順序</label>
+        <select id="question-order" class="field-control">
+          <option value="random">隨機</option>
+          <option value="sequence">依題庫順序</option>
+        </select>
+
+        <div class="button-row">
+          <button id="start-session" class="primary-button" type="button">開始測驗</button>
+          <button id="clear-progress" class="ghost-button" type="button">清除紀錄</button>
+        </div>
+      </section>
+
+      <section class="panel-card">
+        <h2>章節統計</h2>
+        <div id="chapter-stats" class="stats-list"></div>
+      </section>
+    </aside>
+
+    <main class="content-panel">
+      <section class="hero-card">
+        <div>
+          <p id="dataset-meta" class="meta-line">題庫載入中...</p>
+          <h2 id="session-title">請先選擇章節與模式</h2>
+          <p id="session-summary" class="session-summary">載入題庫後即可開始練習。</p>
+        </div>
+        <div class="hero-stats">
+          <article>
+            <span>目前進度</span>
+            <strong id="progress-value">0 / 0</strong>
+          </article>
+          <article>
+            <span>答對率</span>
+            <strong id="accuracy-value">0%</strong>
+          </article>
+          <article>
+            <span>錯題累積</span>
+            <strong id="wrong-total-value">0</strong>
+          </article>
+        </div>
+      </section>
+
+      <section id="empty-state" class="empty-state">
+        <h3>尚未開始測驗</h3>
+        <p>先選擇章節與模式，再按「開始測驗」。作答後會立即顯示正確答案，錯題也會自動收集。</p>
+      </section>
+
+      <section id="quiz-card" class="quiz-card hidden">
+        <div class="question-head">
+          <div>
+            <p id="question-position" class="meta-line"></p>
+            <h3 id="question-chapter"></h3>
+          </div>
+          <span id="question-badge" class="question-badge"></span>
+        </div>
+
+        <p id="question-text" class="question-text"></p>
+        <form id="options-form" class="options-form"></form>
+
+        <div id="answer-feedback" class="answer-feedback hidden"></div>
+
+        <div class="button-row quiz-actions">
+          <button id="submit-answer" class="primary-button" type="button">送出答案</button>
+          <button id="next-question" class="secondary-button" type="button">下一題</button>
+          <button id="retry-wrong" class="ghost-button" type="button">切換到錯題複習</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="data/question-bank.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
