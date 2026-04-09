@@ -34,6 +34,10 @@ jobs:
           cp app.js site/
           cp data/question-bank.js site/data/
 
+      - name: Ensure GitHub Pages is enabled
+        run: |
+          echo "If this job fails at 'Setup Pages' with 404, enable Pages in Settings -> Pages and set Source to GitHub Actions."
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
