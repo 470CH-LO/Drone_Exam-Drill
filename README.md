@@ -54,3 +54,25 @@
    ```
 
 4. 開啟 Ports 面板，點選 `8080` 的 Open in Browser。
+
+## 部署到 GitHub Pages
+
+此專案已提供自動部署設定檔：`.github/workflows/deploy-pages.yml`。
+
+### 一次性設定
+
+1. 將專案推到 GitHub（預設分支為 `main`）。
+2. 到 GitHub 倉庫 `Settings` -> `Pages`。
+3. 在 `Build and deployment` 區塊，將 `Source` 設為 `GitHub Actions`。
+
+### 之後的部署流程
+
+1. 每次推送到 `main`，GitHub Actions 會自動部署。
+2. 到 `Actions` 頁面可查看部署進度（Workflow 名稱：`Deploy To GitHub Pages`）。
+3. 部署完成後，網站網址通常為：
+   - `https://<你的帳號>.github.io/<你的倉庫名>/`
+
+### 注意事項
+
+- 目前部署內容只包含：`index.html`、`styles.css`、`app.js`、`data/question-bank.js`。
+- 若你重新執行題庫轉檔，請記得把新的 `data/question-bank.js` 一起 commit 並 push，線上版才會更新。
